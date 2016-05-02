@@ -1,0 +1,27 @@
+@import url(https://fonts.googleapis.com/css?family=Ubuntu:500);
+@import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono);
+
+body {
+  margin: 15px;
+  font-family: "Ubuntu";
+}
+
+a:link,
+a:visited {
+  border: none;
+  color: rgb(255, 0, 100);
+  text-decoration: none;
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.box {
+  width: 300px;
+  margin: 5px;
+  text-align: center;
+}
