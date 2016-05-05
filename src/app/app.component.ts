@@ -1,10 +1,13 @@
 /*
  * Angular 2 decorators and services
  */
-import {Component, ViewEncapsulation} from 'angular2/core';
-import {RouteConfig, Router} from 'angular2/router';
+import {Component, ViewEncapsulation} from '@angular/core';
+import {RouteConfig, Router} from '@angular/router-deprecated';
 
 import {Home} from './home';
+import {Users} from './users/users.component';
+import {Wikipedia} from './wikipedia/wikipedia.component';
+import {Contact} from './contact/contact.component';
 import {AppState} from './app.service';
 import {RouterActive} from './router-active';
 
@@ -17,7 +20,6 @@ import {RouterActive} from './router-active';
   pipes: [ ],
   providers: [ ],
   directives: [ RouterActive ],
-  encapsulation: ViewEncapsulation.None,
   styles: [
     require('normalize.css'),
     `
@@ -32,13 +34,19 @@ import {RouterActive} from './router-active';
       display: inline;
     }
     md-toolbar li.active {
-      background-color: lightgray;
+      background-color: rgb(255, 0, 100);
+    }
+    md-toolbar a {
+      color: #fff;
+    }
+    .title {
+      margin-right: 20px;
     }
   `],
   template: `
     <header>
       <md-toolbar color="primary">
-        <span>{{ name }}</span>
+        <span class="title">{{ name }}</span>
         <nav>
           <ul>
             <li router-active>
@@ -47,6 +55,18 @@ import {RouterActive} from './router-active';
             |
             <li router-active>
               <a [routerLink]=" ['Home'] ">Home</a>
+            </li>
+            |
+            <li router-active>
+              <a [routerLink]=" ['Users'] ">Users</a>
+            </li>
+            |
+            <li router-active>
+              <a [routerLink]=" ['Wikipedia'] ">Wikipedia</a>
+            </li>
+            |
+            <li router-active>
+              <a [routerLink]=" ['Contact'] ">Contact</a>
             </li>
             |
             <li router-active>
@@ -75,6 +95,9 @@ import {RouterActive} from './router-active';
 @RouteConfig([
   { path: '/',      name: 'Index', component: Home, useAsDefault: true },
   { path: '/home',  name: 'Home',  component: Home },
+  { path: '/users', name: 'Users', component: Users },
+  { path: '/wikipedia', name: 'Wikipedia', component: Wikipedia },
+  { path: '/contact', name: 'Contact', component: Contact },
   // Async load a component using Webpack's require with es6-promise-loader and webpack `require`
   { path: '/about', name: 'About', loader: () => require('es6-promise!./about')('About') }
 ])

@@ -1,8 +1,9 @@
-import {Component} from 'angular2/core';
+import {Component} from '@angular/core';
 import {AppState} from '../app.service';
 
 import {Title} from './title';
 import {XLarge} from './x-large';
+import 'rxjs/add/operator/map';
 
 @Component({
   // The selector is what angular internally uses
@@ -26,11 +27,14 @@ import {XLarge} from './x-large';
   template: require('./home.html')
 })
 export class Home {
+  date;
+
   // Set our default values
   localState = { value: '' };
   // TypeScript public modifiers
   constructor(public appState: AppState, public title: Title) {
-
+    this.date = new Date();
+    setInterval(() => this.date = new Date(), 1000);
   }
 
   ngOnInit() {

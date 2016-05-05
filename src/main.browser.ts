@@ -1,7 +1,7 @@
 /*
  * Providers provided by Angular
  */
-import {bootstrap} from 'angular2/platform/browser';
+import {bootstrap} from '@angular/platform-browser-dynamic';
 /*
 * Platform and Environment
 * our providers/directives/pipes
@@ -13,7 +13,7 @@ import {ENV_PROVIDERS} from './platform/environment';
 * App Component
 * our top level component that holds all of our components
 */
-import {App, APP_PROVIDERS} from './my-app';
+import {App, APP_PROVIDERS} from './app';
 
 /*
  * Bootstrap our Angular app with a top level component `App` and inject
